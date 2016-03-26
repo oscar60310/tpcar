@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>台北找車位</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	
+
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72642495-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	<div id="main">
+		<header id="header">
+			<h1>台北找車位</h1>
+			<p id="subtitle">再也不用浪費時間找車位</p>
+		
+			<div id="state">
+				<i id="state_icon" class=""></i>
+				<span id="state_text">初始化中</span><br>
+			</div>
+			<div id="tab_box">
+				<ul class="nav nav-tabs" id="choose_tab">
+
+  					<li class="active"><a data-toggle="tab" href="#now_c" onclick="to_now_mode();">現在車位</a></li>
+  					<li><a data-toggle="tab" href="#pre_c" onclick="put_now_position_marker();">規劃行程</a></li>
+  
+				</ul>
+			</div>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="now_c">
+					<div id="tips1">
+					您可以拖曳<img class='midd' src='../images/blu-circle.png' alt='icon'/>，或<a id="input_switch" onclick="openinput();">輸入地址</a>
+					</div>
+
+					<div id="inputarea">
+						<div class="input-group">
+   
+      					<input type="text" class="form-control" id="addr" placeholder="請輸入地址">
+      					<div class="input-group-addon btn btn-default" onclick="addrsrearch();">查詢</div>
+    					</div>
+
+    				</div>
+					<button id="sub_btn" type="button" class="btn btn-primary" onclick="search();">找車位</button>
+				</div>
+				<div id="pre_c" class="tab-pane fade">
+					<img class='midd' src='../images/gre-circle.png' alt='icon'/>目前位置: 拖動綠色標誌<br>
+					<img class='midd' src='../images/blu-circle.png' alt='icon'/>目標位置:<br>
+					<div class="input-group">
+   
+      					<input type="text" class="form-control" id="addr2" placeholder="請輸入地址">
+      					<div class="input-group-addon btn btn-default" onclick="addrsrearch2();">查詢</div>
+    				</div>
+					<div id='show_targ_name'>您也可以點兩下地圖來設定目標</div>
+					<button id="sub_btn" type="button" class="btn btn-primary" onclick="pre_search();">找車位</button>
+				</div>
+			</div>
+			<div id="copyright">
+				<il class="menu">
+					<li class="copy1">&copy; 2016 by Goofy v1.2</li>
+					<li class="copy2"><a onclick = "show();">使用資訊</a></li>
+				</li>
+			</div>
+
+		</header>
+		<div id="report" style="display:none;">
+			<h4>問題回報</h4>
+			<ul>
+				<li><font color='blue'>關於網站的問題(定位錯誤、系統建議等等)</font><br>
+					<font color='black'>請填寫<a href="http://goo.gl/forms/s1RekTXWdB" target="_blank"><font color='red'>表單</font></a>
+				</li>
+				<li><font color='blue'>資料問題(資料錯誤、新增資料等等)</font><br>
+					<font color='black'>請聯絡資料負責人或臺北市政府資訊局services@mail.taipei.gov.tw</font>
+				</li>
+			</ul>
+			<h4>使用資料</h4>
+			<ul>
+				以下是目前使用到的資料
+				<li><font color='blue'>臺北市停車場資訊</font><br>
+					<font color='black'>兩項子<a href="http://data.taipei/opendata/datalist/datasetMeta?oid=d5c0656b-5250-4179-a491-c94daa56ef2c" target="_blank"><font color='red'>資料</font></a>，來自台北市政府opendata，聯絡方式請見資料網站</font>
+				</li>
+			</ul>
+			<h4>使用說明</h4>
+			<ul>
+				<li><font color='blue'>剩餘車位查詢</font><br>
+					<font color='black'>當車位顯示如 <i class='fa fa-car'></i><span style='color: #11C6C7'>100</span><span style='color: black'>/200</span> 時，表示該停車場有提供即時資料，您可以參考目前剩餘的車位。</font>
+				</li>
+				<li><font color='blue'>移動所在位置</font><br>
+					<font color='black'>您可以隨時移動<img class='midd' src='../images/blu-circle.png' alt='icon'/>，按下「找車位」後即可重新查詢。</font>
+				</li>
+				<li><font color='blue'>查詢地點</font><br>
+					<font color='black'>按下「輸入地址」後，您可以輸入地址或是關鍵字，我們會找到離台北市最近的地點，自動放上圖釘(此地點僅供參考)。</font>
+				</li>
+				<li><font color='blue'>定位失敗</font><br>
+					<font color='black'>若您出現「定位失敗」訊息，表示您可能封鎖網站存取您的位置，請在瀏覽器中取消封鎖即可。</font>
+				</li>
+				<li><font color='blue'>提示訊息</font><br>
+					<font color='black'>系統會根據過往的經驗計算停車場應該剩餘的車位數，若和實際情況差異太大時，您可能會看到「該停車場剩餘車位比平常多/少」的訊息，提示您停車場有特殊狀況。</font>
+				</li>
+			</ul>
+
+		</div>
+
+
+		<div id="fields_list"></div>
+		
+	</div>
+	<div id="map">
+		Map
+	</div>
+	<div id="mobil_btn">
+		<i id="state_icon2" class=""></i>
+		<a onclick="return_center();">回到中心</a>
+		<a onclick="return_top();">返回</a>
+	</div>
+	
+
+
+	<!--javascript-->
+
+	<!--Google Map Api-->
+
+
+	<script src="../js/map.js"></script>
+	<script src="../js/way.js"></script>
+	<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZLt56afbQQH39eFv6WbRgGUGgCTl8GI&callback=initMap&language=zh-TW">
+    </script>
+
+  <div class="modal fade" id="not_real" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">這不是即時資料</h4>
+        </div>
+        <div class="modal-body">
+          <p>目前顯示的剩餘車位是我們根據您的預計到達時間－<span style="color:blue;"id="arrive_time_show"></span>推測而來，不一定代表實際的情況。</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">好的</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="low_car" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">車位較少</h4>
+        </div>
+        <div class="modal-body">
+          <p>目前停車場的停車位比我們預測的還要少一些，附近可能有其他活動正在舉行，請試著考慮其他停車場。</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">好的</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="more_car" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">車位較多</h4>
+        </div>
+        <div class="modal-body">
+          <p>目前停車場的停車位比我們預測的還要多，這看來是個好現象 :)</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">好的</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="unable" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">資料錯誤</h4>
+        </div>
+        <div class="modal-body">
+          <p>糟糕了，我們沒辦法取得這個停車場的資料，可能是暫時性的機器問題，若這個問題持續未解決，您可以試著連絡我們。</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">好的</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="modal fade" id="ml_un" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">沒有足夠資料</h4>
+        </div>
+        <div class="modal-body">
+          <p>抱歉，這個停車場的變動幅度較大，我們沒辦法推測他的狀況。</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">好的</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
