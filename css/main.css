@@ -1,0 +1,263 @@
+/*Reset*/
+html, body, div 
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 微軟正黑體;
+	box-sizing: content-box;
+}
+
+/*設定高度*/
+html,body
+{
+	height: 100%;
+}
+#main
+{
+	width: 20em;
+	right: 0;
+	position: fixed;
+	text-align: right;
+	overflow-y: scroll;
+	height: 100%;
+}
+#map
+{
+	width: calc(100% - 20em);
+	opacity: 0;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-o-transition: opacity 1s;
+}
+@media screen and (max-width: 640px) {
+	#main,#map{
+		width: 100%;
+		position: relative;
+	}
+	#main{
+		text-align: center;
+		overflow-y: hidden;
+		height: auto;
+	}
+	#map{
+		height: calc(100% - 2em);
+	}
+	
+}
+header
+{
+	padding: 3em 2.25em 0.5em 2.25em;
+}
+header h1
+{
+	color: #454842;
+	margin: 0em;
+}
+#subtitle
+{
+	color: #8A7777;
+	font-weight: 900;
+}
+
+#sub_btn
+{
+	margin-top: 1em;
+	padding: 0.5em 2em;
+}
+
+.fields
+{
+	text-align: left;
+	
+	padding: 1em;
+}
+.fields:hover
+{
+	background-color: #F7EDED;
+}
+.midd
+{
+	vertical-align: middle;
+}
+@keyframes bling {
+    0%   {opacity: 1;}
+    50%  {opacity: 0;}
+    100% {opacity: 1;}
+}
+#mobil_btn
+{
+	display: none;
+	color: blue;
+	text-align: center;
+	margin: 0.5em;	
+}
+#mobil_btn a
+{
+	color: blue;
+	text-decoration: none;
+}
+@media screen and (max-width: 640px) {
+	#mobil_btn
+	{
+		display: block;
+	}
+}
+
+#input_switch
+{
+	color: #FF3B0C;
+}
+#input_switch:hover
+{
+	color: #F1EC13;
+}
+.box
+{
+
+	width: 60%;
+	padding:6px 15px 6px 15px;
+	margin-top:3px; 
+	margin-bottom:3px; 
+}
+.btn2
+{
+	padding: 7px 6px 7px 6px;
+	margin-top:3px; 
+	margin-bottom:3px; 
+	position: relative; 	
+	left: 0;
+	border: 1px solid #adc5cf;
+	background-color: #DDDDDD;
+}
+.btn2:hover
+{
+	background-color: #C7C0C0;
+}
+input
+{
+	font-size: 100%;
+	font-family: 微軟正黑體;
+}
+#inputarea
+{
+	display: none;
+}
+.copy1
+{
+	display: inline-block;
+	padding: 0 0.25em 0 0.25em;
+}
+.copy2
+{
+	display: inline-block;
+	border-left: solid 1px #333030;
+	padding: 0 0.5em 0 0.5em;
+	color: #000000;
+}
+.copy2:hover
+{
+	color: #927B7B;
+}
+#copyright
+{
+	margin-top: 1em;
+}
+#report
+{
+	text-align: left;
+	padding-left: 0em;
+	padding-right: 1em;
+}
+#report h4
+{
+	padding-left: 1em;
+}
+#info_field_name
+{
+	font-size: 16pt;
+    color: blue;
+}
+
+.info_last
+{
+	font-size: 14pt;
+}
+.map_url
+{
+	color: #10A3C4;
+	text-decoration: none;
+}
+.map_url:hover
+{
+	color: #1064C4;
+	text-decoration: none;
+}
+.choose
+{
+	color: #0926AB;
+    font-size: 10pt;
+    font-family: 微軟正黑體;
+    font-weight: bold;
+    text-decoration: none;
+}
+.choose:hover
+{
+	color: #010A30;
+}
+.info_pay
+{
+	display: none;
+}
+@media screen and (max-width: 640px) {
+	#fields_list{
+		display: none;
+	}
+}
+#state_icon2
+{
+	text-align: left;
+}
+.advise
+{
+	font-size: 12pt;
+	font-family: 微軟正黑體;
+}
+#choose_tab
+{
+	margin-top: 0.5em;
+}
+#now_c
+{
+	margin-top: 0.5em;
+}
+#tab_box
+{
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+
+}
+#pre_c
+{
+	text-align: left;
+	padding-left: 1em;
+	padding-top: 0.5em;
+}
+@media screen and (max-width: 640px) {
+	#pre_c
+	{
+		text-align: center;
+	}
+}
+#show_targ_name
+{
+	margin-top: 0.5em;
+}
